@@ -1,0 +1,358 @@
+page{
+    background-color: #f7f8fa;
+    background: #fcf5eb url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYF5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c8TV1mAAAAG3RSTlNAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAvEOwtAAAFVklEQVR4XpWWB67c2BUFb3g557T/hRo9/WUMZHlgr4Bg8Z4qQgQJlHI4A8SzFVrapvmTF9O7dmYRFZ60YiBhJRCgh1FYhiLAmdvX0CzTOpNE77ME0Zty/nWWzchDtiqrmQDeuv3powQ5ta2eN0FY0InkqDD73lT9c9lEzwUNqgFHs9VQce3TVClFCQrSTfOiYkVJQBmpbq2L6iZavPnAPcoU0dSw0SUTqz/GtrGuXfbyyBniKykOWQWGqwwMA7QiYAxi+IlPdqo+hYHnUt5ZPfnsHJyNiDtnpJyayNBkF6cWoYGAMY92U2hXHF/C1M8uP/ZtYdiuj26UdAdQQSXQErwSOMzt/XWRWAz5GuSBIkwG1H3FabJ2OsUOUhGC6tK4EMtJO0ttC6IBD3kM0ve0tJwMdSfjZo+EEISaeTr9P3wYrGjXqyC1krcKdhMpxEnt5JetoulscpyzhXN5FRpuPHvbeQaKxFAEB6EN+cYN6xD7RYGpXpNndMmZgM5Dcs3YSNFDHUo2LGfZuukSWyUYirJAdYbF3MfqEKmjM+I2EfhA94iG3L7uKrR+GdWD73ydlIB+6hgref1QTlmgmbM3/LeX5GI1Ux1RWpgxpLuZ2+I+IjzZ8wqE4nilvQdkUdfhzI5QDWy+kw5Wgg2pGpeEVeCCA7b85BO3F9DzxB3cdqvBzWcmzbyMiqhzuYqtHRVG2y4x+KOlnyqla8AoWWpuBoYRxzXrfKuILl6SfiWCbjxoZJUaCBj1CjH7GIaDbc9kqBY3W/Rgjda1iqQcOJu2WW+76pZC9QG7M00dffe9hNnseupFL53r8F7YHSwJWUKP2q+k7RdsxyOB11n0xtOvnW4irMMFNV4H0uqwS5ExsmP9AxbDTc9JwgneAT5vTiUSm1E7BSflSt3bfa1tv8Di3R8n3Af7MNWzs49hmauE2wP+ttrq+AsWpFG2awvsuOqbipWHgtuvuaAE+A1Z/7gC9hesnr+7wqCwG8c5yAg3AL1fm8T9AZtp/bbJGwl1pNrE7RuOX7PeMRUERVaPpEs+yqeoSmuOlokqw49pgomjLeh7icHNlG19yjsXXccrTO5YFpUU5ZSvdHW9Sgw04cp+C2vUEMlNQLQhLepiBkHUw8yFm0S5kE3Z2QmDqNN8HNfVoNlMkQ9gzwB1LQ1MAbEI5EVeW6GNsJ0kYSD1ZVZu6C3MJbLNuFvYFBWb5urtYLsJmCzU9U3FRbqrP3s4JyN0MDZlU/x3PVDM8o=');
+    background-size: 100% auto;
+}
+.text-error{
+    color: #ff1919;
+}
+.text-success{
+    color: #4fc08d;
+}
+.card{
+    margin:40rpx;
+    background-color: #fff;
+    border-radius: 20rpx;
+    box-shadow: 0 8rpx 12rpx #ebedf0;
+    margin-bottom: 24rpx;
+    padding: 24rpx;
+}
+.info{
+    line-height: 2em;
+    color: #666;
+}
+.hilight-text{
+    color: #4fc08d;
+}
+.question-con{
+    margin-top: 20rpx;
+}
+.question-title{
+    font-size: 28rpx;
+    color: #000;
+}
+.question-options{
+    padding: 10rpx 0;
+}
+.options-item{
+    font-size: 24rpx;
+    line-height: 40rpx;
+    margin: 16rpx 0;
+    padding: 16rpx 30rpx;
+    border-radius: 999rpx;
+}
+.options-item_checked,.options-item_correct{
+    font-size: 24rpx;
+    line-height: 40rpx;
+    margin: 16rpx 0;
+    padding: 16rpx 30rpx;
+    background-color: #ebfff0;
+    color: #4fc08d;
+    border-radius: 999rpx;
+}
+.options-item_error{
+    font-size: 24rpx;
+    line-height: 40rpx;
+    margin: 16rpx 0;
+    padding: 16rpx 30rpx;
+    background-color: #fff0f0;
+    color: #ff1919;
+    border-radius: 999rpx;
+}
+.options-item_missing{
+    font-size: 24rpx;
+    line-height: 40rpx;
+    margin: 16rpx 0;
+    padding: 16rpx 30rpx;
+    background-color: #fff0f0;
+    color: #ff1919;
+    border-radius: 999rpx;
+    position: relative;
+}
+.options-item_missing:after{
+    content:"未选择";
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 20rpx;
+    line-height: 1.5em;
+    padding: 0rpx 10rpx;
+    background-color: #ff1919;
+    color: white;
+    
+}
+.desc-block{
+    margin: 16rpx 0;
+    font-size: 26rpx;
+}
+.answer-row{
+    padding: 0 20rpx;
+    display: flex;
+    justify-content: space-between;
+}
+.desc-con{
+    margin-top: 20rpx;
+    padding: 20rpx;
+}
+
+.user-info{
+    margin:20rpx;
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+.avatar{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.nick-name{
+    margin-left: 20rpx;
+}
+.block{
+    margin: 20rpx;
+}
+.result-name{
+    font-size: 32rpx;
+    font-weight: bold;
+    width: 100%;
+}
+.result-desc{
+    width: 100%;
+    font-size: 24rpx;
+}
+.result-score{
+    text-align: center;
+    font-size: 98rpx;
+    font-weight: bold;
+    color: #4fc08d;
+    padding: 20rpx 0;
+}
+.result-detail{
+    color: #a9a9a9;
+    font-size: 24rpx;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.result-green{
+    color: #4fc08d;
+    font-size: 36rpx;
+}
+.result-red{
+    color: #ff1919;
+    font-size: 36rpx;
+}
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0rpx;
+    right: 0;
+    padding: 20rpx 0;
+    background-color: white;
+    box-shadow: 0 8rpx 12rpx #ebedf0;
+    /* --safe-area-inset-bottom:env(--safe-area-inset-bottom);
+    padding-bottom: calc(50rpx + var(--safe-area-inset-bottom)); */
+}
+.btn-row{
+    display: flex;
+    justify-content: space-around;
+}
+.loading{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+/* 错题卡片（模拟真实纸张） */
+.card {
+  background: #fffcf5;
+  border: 1rpx solid #e0d7c6;
+  border-radius: 8rpx;
+  margin: 30rpx;
+  padding: 40rpx;
+  box-shadow: 0 8rpx 24rpx rgba(175, 135, 100, 0.1);
+  position: relative;
+  min-height: 400rpx;
+}
+
+/* 模拟装订线效果 */
+.card::before {
+  content: '';
+  position: absolute;
+  left: -10rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20rpx;
+  height: 80%;
+  background: repeating-linear-gradient(
+    180deg,
+    #d4a373 0rpx,
+    #d4a373 10rpx,
+    transparent 10rpx,
+    transparent 20rpx
+  );
+  border-radius: 8rpx 0 0 8rpx;
+}
+
+/* 模拟手写批注效果 */
+.hilight-text {
+  color: #d94f44 !important;
+  font-weight: bold;
+  text-shadow: 2rpx 2rpx 4rpx rgba(217, 79, 68, 0.1);
+  position: relative;
+  display: inline-block;
+  padding: 0 8rpx;
+}
+
+.hilight-text::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4rpx;
+  width: 100%;
+  height: 6rpx;
+  background: rgba(217, 79, 68, 0.2);
+  border-radius: 3rpx;
+}
+
+/* 题目类型标签 */
+.info text[class*="hilight-text"]:last-child {
+  background: #fff2f1;
+  border: 2rpx solid #ffd8d5;
+  border-radius: 6rpx;
+  padding: 8rpx 16rpx;
+  transform: rotate(-2deg);
+}
+
+/* 选项样式（模拟答题卡） */
+.question-options view {
+  background: #fff;
+  border: 2rpx solid #e0d7c6;
+  border-radius: 12rpx;
+  padding: 28rpx 40rpx;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+/* 正确/错误状态 */
+.question-options view.correct {
+  background: #f0fff0;
+  border-color: #8bc34a;
+  box-shadow: 0 4rpx 12rpx rgba(139, 195, 74, 0.2);
+}
+
+.question-options view.error {
+  background: #fff0f0;
+  border-color: #ff6666;
+  box-shadow: 0 4rpx 12rpx rgba(255, 102, 102, 0.2);
+  animation: shake 0.4s ease;
+}
+
+/* 错误抖动动画 */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8rpx); }
+  75% { transform: translateX(8rpx); }
+}
+
+/* 答案解析区 */
+.desc_block {
+  background: #f8f4e8;
+  border: 2rpx dashed #e0d7c6;
+  border-radius: 12rpx;
+  margin-top: 40rpx;
+  padding: 32rpx;
+  position: relative;
+}
+
+.desc_block::before {
+  content: "✎ 解析";
+  position: absolute;
+  top: -18rpx;
+  left: 30rpx;
+  background: #f8f4e8;
+  padding: 0 16rpx;
+  color: #d4a373;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+/* 底部操作栏 */
+.footer {
+  background: #fffaf0;
+  border-top: 2rpx solid #e0d7c6;
+  box-shadow: 0 -8rpx 24rpx rgba(175, 135, 100, 0.05);
+}
+
+/* 按钮样式改造 */
+van-button {
+  background: #fff !important;
+  border: 2rpx solid #e0d7c6 !important;
+  color: #66594d !important;
+  transition: all 0.3s;
+}
+
+van-button[color="#4fc08d"] {
+  border-color: #d4a373 !important;
+  background: #fff4e6 !important;
+  color: #d94f44 !important;
+}
+
+van-button:active {
+  transform: scale(0.96);
+  opacity: 0.9;
+}
+
+/* 收藏按钮特效 */
+van-button[name="star"] {
+  position: relative;
+  overflow: hidden;
+}
+
+van-button[name="star"]::after {
+  content: "★";
+  position: absolute;
+  color: #ffd700;
+  font-size: 48rpx;
+  opacity: 0;
+  animation: starPop 0.6s ease-out;
+}
+
+@keyframes starPop {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+/* 空状态插画 */
+van-empty image {
+  width: 300rpx !important;
+  height: 300rpx !important;
+  content: url('https://example.com/empty-errorbook.png'); /* 替换为空状态插画 */
+}
+
+/* 加载动画改造 */
+.loading {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16rpx;
+  padding: 40rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0,0,0,0.1);
+}
+
+van-loading__spinner {
+  color: #d4a373 !important;
+}
+
+
+
+
+

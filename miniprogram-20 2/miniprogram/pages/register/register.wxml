@@ -1,0 +1,90 @@
+<view class="register-container">
+  <!-- 顶部标题和logo -->
+  <view class="register-header">
+    <image class="logo" src="/images/exam-logo.png"></image>
+    <text class="title">注册学习账号</text>
+    <text class="subtitle">开启您的计算机网络安全知识学习之旅</text>
+  </view>
+
+  <!-- 注册表单 -->
+  <view class="register-form">
+    <van-cell-group inset>
+      <van-field
+        label="用户名"
+        left-icon="user-o"
+        placeholder="请输入用户名(4-16位)"
+        value="{{username}}"
+        border="{{false}}"
+        custom-style="padding: 24rpx 0;"
+        bind:change="onUsernameChange"
+        required
+        clearable
+      />
+      
+      <van-field
+        label="密码"
+        type="password"
+        left-icon="lock"
+        placeholder="请输入密码(6-20位)"
+        value="{{password}}"
+        border="{{false}}"
+        custom-style="padding: 24rpx 0;"
+        bind:change="onPasswordChange"
+        required
+        clearable
+      />
+      
+      <van-field
+        label="确认密码"
+        type="password"
+        left-icon="lock"
+        placeholder="请再次输入密码"
+        value="{{confirmPassword}}"
+        border="{{false}}"
+        custom-style="padding: 24rpx 0;"
+        bind:change="onConfirmPasswordChange"
+        required
+        clearable
+      />
+      
+      <van-field
+        label="手机号"
+        type="number"
+        left-icon="phone-o"
+        placeholder="请输入手机号"
+        value="{{phone}}"
+        border="{{false}}"
+        custom-style="padding: 24rpx 0;"
+        bind:change="onPhoneChange"
+        clearable
+      />
+    </van-cell-group>
+
+    <!-- 服务协议 -->
+    <view class="agreement">
+      <van-checkbox value="{{agreed}}" bind:change="onAgreeChange" shape="square">
+        <text>我已阅读并同意</text>
+        <text class="link" bindtap="onViewAgreement">《系统服务协议》</text>
+      </van-checkbox>
+    </view>
+  </view>
+  
+  <!-- 注册按钮 -->
+  <van-button 
+    type="primary" 
+    block
+    round
+    loading="{{loading}}"
+    bind:click="onRegister"
+    custom-class="register-btn"
+    disabled="{{!agreed}}"
+  >
+    立即注册
+  </van-button>
+
+  <!-- 已有账号登录 -->
+  <view class="login-link">
+    <text>已有账号？</text>
+    <text class="link" bindtap="onNavigateToLogin">立即登录</text>
+  </view>
+</view>

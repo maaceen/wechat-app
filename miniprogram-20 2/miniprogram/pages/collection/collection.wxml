@@ -1,0 +1,148 @@
+<!-- wxs脚本 -->
+<wxs module="tool">
+    // 此函数判断用户的答案是否正确，返回值是类名,正确的话用户的答案会变绿，反之变红，参数是exam.js的data 中的question
+    function getAnswerClass(question) {
+        // 因为answer是一个数组，所以需要将它拼成字符串，兼容单多选题的情况
+        var isCorrect = question.answer.sort().join() === question.userAnswer.sort().join();
+        return isCorrect ? "text-success" : "text-error";
+    }
+    //此函数返回题目中选项的样式
+    // question,showResult参数来自exam.js中的data,item来自下面循环渲染选项中的item
+    function getItemClass(question, item) {
+        // 用户还未回答，就不展示答案
+        if (!question.userAnswer) {
+            return "options-item";
+        }
+        // 判断用户是否选择了当前某一选项
+        var userChecked = question.userAnswer.indexOf(item.value) !== -1;
+        // 判断当前答案是不是在正确答案当中
+        var isCorrect = question.answer.indexOf(item.value) != -1;
+        // 如果不显示答案
+        if (!question.showAnswer) {
+            if (userChecked) {//用户选中了某一选项
+                return "options-item_checked"//返回绿色选中样式
+            } else {
+                return "options-item"//返回默认样式
+            }
+        } else {//展示解析的情况
+            if (userChecked) {//用户选中了某一选项
+                if (isCorrect) {//是正确答案
+                    return "options-item_checked"//返回绿色样式
+                } else {//是错误答案
+                    return "options-item_error"// 返回红色样式
+                }
+            } else {//用户还未选中选项
+                if (isCorrect) {//是正确答案
+                    if (question.type === 'checkbox') {//多选题才会有漏选样式
+                        return "options-item_missing"//返回漏选样式
+                    } else {
+                        return "options-item_correct"
+                    }
+
+                } else {//是错误答案
+                    return "options-item"// 返回默认样式
+                }
+            }
+        }
+    }
+    //必须定义一个exports才能被下面用到
+    module.exports = {
+        getAnswerClass: getAnswerClass,
+        getItemClass: getItemClass
+    }
+</wxs>
+<!-- 错题本 -->
+<!-- 题目加载完成后显示 -->
+<block wx:if="{{loadFinish}}">
+    <!-- 有错题时显示 -->
+    <block wx:if="{{total > 0}}">
+        <!-- 选择题部分 -->
+        <view class="card">
+            <view class="info">
+                <text class="hilight-text">{{currentIndex + 1}}</text>/{{total}}
+                <text class="hilight-text">【{{question.typeText}}】</text>
+            </view>
+            <view class="question-con">
+                <view class="question-title">
+                    {{question.title}}
+                </view>
+                <view class="question-options">
+                    <!-- 循环渲染选项 -->
+                    <!-- 下面data-value="{{item.value}}的意思是：把当前选项的A,B,C,D值存入到event中，当调用exam.js中的onItemClick函数时，参数event就被赋值为一个对象，event对象中的target下的dataset就会有一个键value，值是对应选项的A,B,C,D -->
+                    <view wx:for="{{question.options}}" wx:key="value" bindtap="onItemClick" class="{{tool.getItemClass(question,item)}}" data-value="{{item.value}}">
+
+
+                        {{item.value}}.{{item.text}}
+                    </view>
+
+
+                </view>
+            </view>
+            <!-- 用户点击了某一选项并且question中还没有 showAnswer属性时就显示对答案的按钮-->
+            <view wx:if="{{question.userAnswer && !question.showAnswer}}">
+                <van-button bindtap="onShowAnswer" round type="primary" size="small" color="#4fc08d">
+                    对答案
+                </van-button>
+            </view>
+            <!-- 答案解析部分 -->
+            <!-- 先根据exam.js中的showResult判断是否需要展示答案 -->
+            <!-- 需要展示答案并且用户已经回答了才展示答案 -->
+            <view wx:if="{{question.showAnswer && question.userAnswer}}" class="desc_block">
+                <view class="answer-row">
+                    <view>你的答案：<text class="{{tool.getAnswerClass(question)}}">{{question.userAnswer}}</text></view>
+                    <view>正确答案：<text class="text-success">{{question.answer}}</text></view>
+                </view>
+                <view class="desc-con">
+                    <view>解析：</view>
+                    {{question.desc}}
+                </view>
+            </view>
+        </view>
+        <view>
+          <van-button bindtap="goCuoTi" round type="primary" size="small" color="#4fc08d">
+                     
+                    按时间先后筛选错题
+                </van-button>
+        </view>
+        <view class="footer">
+            <!-- 下方按钮部分 -->
+            <view class="btn-row">
+                <van-button bindtap="goPrev" round type="primary" size="small" color="#4fc08d">
+                    <van-icon name="arrow-left" />
+                    上一题
+                </van-button>
+                <van-button wx:if="{{question.starred}}" bindtap="removeStar" round type="primary" size="small" color="#4fc08d">
+                    <van-icon name="star" />
+
+                    已收藏
+                </van-button>
+                <van-button bindtap="addStar" wx:else round type="primary" size="small" color="#4fc08d">
+                    <van-icon name="star-o" />
+                    收藏
+                </van-button>
+                <van-button bindtap="onDelete" round type="primary" size="small" color="#4fc08d">
+                    <van-icon name="delete-o" />
+                    删除
+                </van-button>
+                <van-button bindtap="goNext" round type="primary" size="small" color="#4fc08d">
+                    下一题
+                    <van-icon name="arrow" />
+                </van-button>
+            </view>
+        </view>
+    </block>
+    <!-- 没错题时显示 -->
+    <block wx:else>
+        <van-empty description="没有错题">
+            <van-button bindtap="goHome" round color="#4fc08d" custom-class="bottom-button">返回</van-button>
+        </van-empty>
+    </block>
+</block>
+<!-- 题目还没加载完成时显示 -->
+<block wx:else>
+    <view class="loading">
+    <van-loading type="spinner" size="64px" vertical>加载中</van-loading>
+    </view>
+</block>
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />

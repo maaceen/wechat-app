@@ -1,0 +1,55 @@
+<!-- pages/chapter-practice/chapter-practice.wxml -->
+<view class="container">
+  <view class="header">
+    <text class="title">章节练习</text>
+  </view>
+  
+  <view class="chapter-list">
+    <!-- 信息保护章节 -->
+    <view class="chapter-card" bindtap="navigateToPractice" data-chapter="info-protection">
+      <image class="chapter-icon" src="/images/protection-fill.png"></image>
+      <view class="chapter-info">
+        <text class="chapter-title">信息保护</text>
+        <text class="chapter-desc">涵盖数据加密、隐私保护等知识点</text>
+      </view>
+      <view class="chapter-arrow">
+        <image src="/images/arrow-right.png"></image>
+      </view>
+    </view>
+    
+    <!-- 网络防护章节 -->
+    <view class="chapter-card" bindtap="navigateToPractice" data-chapter="network-protection">
+      <image class="chapter-icon" src="/images/networkprotection.png"></image>
+      <view class="chapter-info">
+        <text class="chapter-title">网络防护</text>
+        <text class="chapter-desc">包含防火墙、入侵检测等网络防护技术</text>
+      </view>
+      <view class="chapter-arrow">
+        <image src="/images/arrow-right.png"></image>
+      </view>
+    </view>
+    
+    <!-- 应用安全章节 -->
+    <view class="chapter-card" bindtap="navigateToPractice" data-chapter="app-security">
+      <image class="chapter-icon" src="/images/security.png"></image>
+      <view class="chapter-info">
+        <text class="chapter-title">应用安全</text>
+        <text class="chapter-desc">涉及Web安全、移动应用安全等实际应用</text>
+      </view>
+      <view class="chapter-arrow">
+        <image src="/images/arrow-right.png"></image>
+      </view>
+    </view>
+    <!-- 应用安全章节 -->
+    <view class="chapter-card" bindtap="navigateToPractice" data-chapter="app-security">
+      <image class="chapter-icon" src="/images/security.png"></image>
+      <view class="chapter-info">
+        <text class="chapter-title">物理安全</text>
+        <text class="chapter-desc">涉及服务器，用户中心等实际应用</text>
+      </view>
+      <view class="chapter-arrow">
+        <image src="/images/arrow-right.png"></image>
+      </view>
+    </view>
+  </view>
+</view>

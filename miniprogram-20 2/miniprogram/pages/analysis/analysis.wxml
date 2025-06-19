@@ -1,0 +1,38 @@
+<!-- analysis.wxml -->
+<view class="container">
+  <!-- 数据渲染 -->
+  <view class="history-list">
+    <view wx:for="{{analysisData.scores}}" wx:key="index" class="history-item">
+      <view class="item-header">
+        <text>第{{index + 1}}次测试</text>
+        <text class="date">{{formatDate(index)}}</text>
+      </view>
+
+      <view class="stats">
+        <!-- 分数 -->
+        <view class="stat">
+          <text class="label">得分</text>
+          <text class="value score">{{item}}分</text>
+        </view>
+
+        <!-- 正确率 -->
+        <view class="stat">
+          <text class="label">正确率</text>
+          <text class="value accuracy">{{analysisData.accuracy[index]}}%</text>
+        </view>
+
+        <!-- 正确/错误题数 -->
+        <view class="counts">
+          <view class="count correct">
+            <image src="/images/correct.png" />
+            <text>{{analysisData.correctCounts[index] + 17}}题</text>
+          </view>
+          <view class="count wrong">
+            <image src="/images/wrong.png" />
+            <text>{{analysisData.wrongCounts[index] + 178}}题</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

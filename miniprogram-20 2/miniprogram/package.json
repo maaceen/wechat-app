@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@vant/weapp": "^1.11.7",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.0",
+    "request-promise": "^4.2.6"
+  }
+}

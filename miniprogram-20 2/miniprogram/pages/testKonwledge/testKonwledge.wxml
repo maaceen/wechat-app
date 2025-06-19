@@ -1,0 +1,53 @@
+<view class="container">
+  <!-- 考试头部 -->
+  <view class="header">
+    <view class="title">计算机网络安全知识检测</view>
+    <view class="timer">剩余时间：{{minutes}}:{{seconds < 10 ? '0' + seconds : seconds}}</view>
+  </view>
+
+  <!-- 题目滑动容器 -->
+  <view 
+    current="{{currentIndex}}" 
+    bindchange="swiperChange" 
+    class="swiper-container" 
+    style="height: {{swiperHeight}}rpx"
+  >
+    <block wx:for="{{questions}}" wx:key="index">
+      <view>
+        <view class="question-card">
+          <!-- 题目头部 -->
+          <view class="q-header">
+            <text class="q-type">{{item.type === 'single' ? '单选题' : '多选题'}}</text>
+            <text class="q-num">第{{index + 1}}/{{questions.length}}题</text>
+          </view>
+
+          <!-- 题目正文 -->
+          <view class="q-content">{{item.question}}</view>
+
+          <!-- 选项列表 -->
+          <view class="options">
+            <view 
+              wx:for="{{item.options}}"
+              wx:key="oid"
+              class="option {{selectedAnswers[index] && selectedAnswers[index].includes(oid) ? 'active' : ''}}"
+              bindtap="selectOption"
+              data-qindex="{{index}}"
+              data-oid="{{oid}}"
+            >
+              <text class="option-label">{{['A','B','C','D','E','F'][oid]}}</text>
+              <text class="option-text">{{item}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-- 底部操作栏 -->
+  <view class="footer">
+    <progress 
+      percent="{{(currentIndex + 1)/questions.length * 100}}" 
+      stroke-width="6" 
+      activeColor="#07c160" 
+    />
+  </view>
+</view>

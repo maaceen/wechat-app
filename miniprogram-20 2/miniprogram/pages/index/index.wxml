@@ -1,0 +1,117 @@
+<view class="user-container">
+  <!-- 用户信息卡片 -->
+  <view class="user-card">
+    <view class="user-info">
+      <image 
+        bindtap="onChangeAvatar"
+        class="avatar"
+        src="{{avatarUrl || defaultAvatarUrl}}" 
+        mode="aspectFill"
+      />
+      <view class="nick" bindtap="onOpenNicknameLayer">
+        {{nickName || defaultNickName}}
+      </view>
+      <view class="user-meta">
+        <text class="user-id">ID: {{userId || '未登录'}}</text>
+        <text class="user-level">{{userLevel || '普通考生'}}</text>
+      </view>
+    </view>
+    
+    <!-- 学习数据统计 -->
+    <view class="stats-container">
+      <view class="stat-item">
+        <text class="stat-value">{{examCount || 0}}</text>
+        <text class="stat-label">专项刷题</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">{{correctRate || '0%'}}</text>
+        <text class="stat-label">正确率</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">{{studyDays || 0}}</text>
+        <text class="stat-label">学习天数</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 功能入口网格 -->
+  <view class="function-grid">
+    <van-grid column-num="3" border="{{ false }}" custom-class="custom-grid">
+      <van-grid-item 
+        link-type="navigateTo" 
+        url="/pages/exam/exam" 
+        icon="description" 
+        text="顺序答题"
+        custom-class="grid-item"
+      />
+      <van-grid-item 
+        link-type="navigateTo" 
+        url="/pages/testKonwledge/testKonwledge" 
+        icon="description" 
+        text="乱序答题"
+        custom-class="grid-item"
+      />
+      <van-grid-item 
+        link-type="navigateTo" 
+        url="/pages/testPoint/testPoint" 
+        icon="description" 
+        text="章节练习"
+        custom-class="grid-item"
+      />
+      <van-grid-item 
+        link-type="navigateTo" 
+        url="/pages/testKonwledge/testKonwledge" 
+        icon="description" 
+        text="学习进度"
+        custom-class="grid-item"
+      />
+      <van-grid-item 
+        link-type="navigateTo" 
+        url="/pages/collection/collection" 
+        icon="star" 
+        text="错题本"
+        custom-class="grid-item"
+      />
+      <van-grid-item 
+        link-type="navigateTo" 
+        url="/pages/star/star" 
+        icon="like" 
+        text="收藏本"
+        custom-class="grid-item"
+      />
+      <van-grid-item 
+        link-type="navigateTo" 
+        url="/pages/analysisScore/analysisScore" 
+        icon="clock" 
+        text="成绩分析"
+        custom-class="grid-item"
+      />
+      <van-grid-item 
+        link-type="navigateTo" 
+        url="/pages/analysis/analysis" 
+        icon="chart-trending-o" 
+        text="历史记录"
+        custom-class="grid-item"
+      />
+      <van-grid-item 
+        link-type="navigateTo" 
+        url="/pages/settings/settings" 
+        icon="setting" 
+        text="设置"
+        custom-class="grid-item"
+      />
+    </van-grid>
+  </view>
+  
+  <!-- 考试倒计时 -->
+  <view class="exam-reminder" wx:if="{{nextExam}}">
+    <view class="reminder-header">
+      <van-icon name="warning" color="#ff976a" size="36rpx" />
+      <text>最近考试提醒</text>
+    </view>
+    <view class="reminder-content">
+      <text>{{nextExam.name}}</text>
+      <text>剩余时间: {{nextExam.timeLeft}}</text>
+    </view>
+  </view>
+</view>

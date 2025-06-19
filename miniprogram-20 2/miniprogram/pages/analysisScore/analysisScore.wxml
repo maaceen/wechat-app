@@ -1,0 +1,89 @@
+
+<view class="container">
+  <!-- 加载状态 -->
+  <view wx:if="{{isLoading}}" class="skeleton">
+    <view class="skeleton-card"></view>
+    <view class="skeleton-chart"></view>
+    <view class="skeleton-grid">
+      <view class="skeleton-item"></view>
+      <view class="skeleton-item"></view>
+    </view>
+  </view>
+
+  <!-- 数据展示 -->
+  <view wx:else class="content">
+    <!-- 核心指标卡片 -->
+    <view class="metric-grid">
+      <van-card class="metric-card gradient-blue">
+        <view slot="title">
+          <van-icon name="star" color="#fff" size="48rpx" />
+          <text class="metric-value">{{averageScore}}</text>
+          <text class="metric-label">平均分</text>
+        </view>
+      </van-card>
+
+      <van-card class="metric-card gradient-green">
+        <view slot="title">
+          <van-icon name="medal" color="#fff" size="48rpx" />
+          <text class="metric-value">{{maxScore}}</text>
+          <text class="metric-label">最高分</text>
+        </view>
+      </van-card>
+    </view>
+
+    <!-- 趋势分析图表 -->
+    <view class="chart-card">
+      <view class="chart-header">
+        <text>成绩趋势分析</text>
+        <van-tag type="primary">最近{{scores.length}}次</van-tag>
+      </view>
+      <ec-canvas id="trend-chart" canvas-id="trend-chart"></ec-canvas>
+    </view>
+
+    <!-- 详情分析 -->
+    <view class="detail-grid">
+      <!-- 正确率环形图 -->
+      <view class="detail-card">
+        <view class="progress-ring">
+          <view class="ring" style="background: conic-gradient(#4fc08d {{averageAccuracy}}, #eee 0);"></view>
+          <text class="progress-text">{{averageScore}}%</text>
+        </view>
+        <view class="progress-label">
+          <van-icon name="checked" color="#4fc08d" />
+          <text>平均正确率</text>
+        </view>
+      </view>
+
+      <!-- 正确/错误对比 -->
+      <view class="detail-card">
+        <view class="compare-chart">
+          <view class="bar correct" style="width: {{correctPercent}}"></view>
+          <view class="bar wrong" style="width: {{wrongPercent}}"></view>
+        </view>
+        <view class="compare-legend">
+          <view class="legend-item">
+            <van-icon name="circle" color="#4fc08d" />
+            <text>正确 {{totalCorrect}}题</text>
+          </view>
+          <view class="legend-item">
+            <van-icon name="circle" color="#ee0a24" />
+            <text>错误 {{totalWrong}}题</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <van-button 
+        type="primary" 
+        block 
+        round
+        custom-class="login-btn"
+        bind:click="computeMetrics"
+        loading="{{loading}}"
+      >
+        进行成绩分析
+      </van-button>
+  </view>
+  <view class="system-title">
+      <image class="bingtu" src="../../images/bingtu.png"></image>
+    </view>
+</view>

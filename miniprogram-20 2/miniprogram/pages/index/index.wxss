@@ -1,0 +1,131 @@
+.user-container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f5f7fa 0%, #e4e8eb 100%);
+  padding-bottom: 40rpx;
+}
+
+/* 用户卡片 */
+.user-card {
+  background: #fff;
+  border-radius: 0 0 40rpx 40rpx;
+  padding: 40rpx 30rpx 60rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.05);
+  margin-bottom: 30rpx;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-bottom: 40rpx;
+}
+
+.avatar {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  border: 6rpx solid #fff;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.1);
+  margin-bottom: 20rpx;
+  background-color: #f5f5f5;
+}
+
+.nick {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.user-meta {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.user-id {
+  margin-right: 20rpx;
+}
+
+.user-level {
+  background: linear-gradient(to right, #ffd01e, #ff8917);
+  color: #fff;
+  padding: 4rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+}
+
+/* 学习数据统计 */
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 30rpx 0;
+  background: rgba(7, 193, 96, 0.1);
+  border-radius: 20rpx;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-value {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #07c160;
+  margin-bottom: 8rpx;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 功能网格 */
+.function-grid {
+  background: #fff;
+  border-radius: 20rpx;
+  margin: 0 30rpx;
+  padding: 20rpx 0;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.05);
+}
+
+.custom-grid {
+  background: transparent !important;
+}
+
+.grid-item {
+  padding: 30rpx 0 !important;
+}
+
+/* 考试提醒 */
+.exam-reminder {
+  background: #fff;
+  border-radius: 20rpx;
+  margin: 30rpx;
+  padding: 30rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.05);
+}
+
+.reminder-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+  color: #ff976a;
+  font-weight: bold;
+}
+
+.reminder-header text {
+  margin-left: 10rpx;
+}
+
+.reminder-content {
+  display: flex;
+  justify-content: space-between;
+  font-size: 26rpx;
+  color: #666;
+}

@@ -1,0 +1,86 @@
+<!-- pages/login/login.wxml -->
+<view class="login-container">
+  <!-- 顶部公告 -->
+  <van-notice-bar
+    left-icon="volume-o"
+    text="计算机网络安全知识答题系统。"
+    speed="50"
+    custom-style="background: rgba(255,255,255,0.9);border-radius: 16rpx;"
+  />
+
+  <!-- 登录卡片 -->
+  <view class="login-card">
+    <!-- 系统标题 -->
+    <view class="system-title">
+      <image class="system-logo" src="../../images/exam-logo.png"></image>
+      <text class="system-name">计算机网络安全知识答题系统</text>
+    </view>
+
+    <!-- 登录表单 -->
+    <view class="login-form">
+      <van-cell-group inset>
+        <van-field
+          label="用户名"
+          left-icon="edit"
+          placeholder="请输入用户名"
+          clearable
+          border="{{false}}"
+          custom-style="padding: 24rpx 0;"
+          bind:change="onUsernameChange"
+        />
+        
+        <van-field
+          label="登录密码"
+          type="password"
+          left-icon="lock"
+          placeholder="请输入密码"
+          border="{{false}}"
+          custom-style="padding: 24rpx 0;"
+          bind:change="onPasswordChange"
+        />
+        
+        <view class="form-extras">
+          <view class="remember-me">
+            <van-icon name="circle" size="36rpx" color="#ccc" wx:if="{{!rememberMe}}" bindtap="toggleRemember" />
+            <van-icon name="checked" size="36rpx" color="#07c160" wx:else bindtap="toggleRemember" />
+            <text>记住账号</text>
+          </view>
+          <text class="forgot-pwd" bindtap="onForgotPwd">忘记密码?</text>
+        </view>
+      </van-cell-group>
+      
+      <van-button 
+        type="primary" 
+        block 
+        round
+        custom-class="login-btn"
+        bind:click="onSubmit"
+        loading="{{loading}}"
+      >
+        考生登录
+      </van-button>
+    </view>
+
+    <!-- 考试信息 -->
+    <view class="exam-info">
+      <view class="info-item">
+        <van-icon name="clock-o" size="36rpx" color="#07c160" />
+        <text>计算机网络安全知识答题</text>
+      </view>
+      <view class="info-item">
+        <van-icon name="todo-list-o" size="36rpx" color="#07c160" />
+        <text>题型: 选择题/操作题</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部版权信息 -->
+  <view class="footer">
+    <text>计算机网络安全委员会 © 2025</text>
+    <text>技术支持: 网络安全委员会</text>
+  </view>
+</view>
+<van-dialog id="van-dialog"/>
+
+  
+

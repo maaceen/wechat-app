@@ -1,0 +1,142 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f8f9fa;
+}
+
+/* 头部样式 */
+.header {
+  padding: 24rpx 32rpx;
+  background: #2d8cf0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  color: #fff;
+  font-size: 36rpx;
+  font-weight: 600;
+}
+
+.timer {
+  color: rgba(255,255,255,0.9);
+  font-size: 32rpx;
+}
+
+/* 滑动容器 */
+.swiper-container {
+  flex: 1;
+  background: #f8f9fa;
+}
+
+/* 题目卡片 */
+.question-card {
+  margin: 30rpx;
+  padding: 40rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.08);
+}
+
+.q-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40rpx;
+}
+
+.q-type {
+  color: #07c160;
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+.q-num {
+  color: #666;
+  font-size: 28rpx;
+}
+
+/* 题目内容 */
+.q-content {
+  font-size: 36rpx;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 60rpx;
+}
+
+/* 选项样式 */
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.option {
+  padding: 28rpx;
+  border: 2rpx solid #eee;
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.option.active {
+  border-color: #07c160;
+  background: #f0fff7;
+}
+
+.option-label {
+  width: 60rpx;
+  text-align: center;
+  font-weight: bold;
+  color: #666;
+  margin-right: 30rpx;
+  font-size: 34rpx;
+}
+
+.option-text {
+  flex: 1;
+  font-size: 32rpx;
+  color: #333;
+}
+
+/* 底部操作栏 */
+.footer {
+  padding: 24rpx 32rpx;
+  background: #fff;
+  box-shadow: 0 -4rpx 16rpx rgba(0,0,0,0.06);
+}
+
+.controls {
+  display: flex;
+  gap: 24rpx;
+  margin-top: 32rpx;
+}
+
+.btn {
+  flex: 1;
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 32rpx;
+  border-radius: 12rpx;
+  transition: all 0.2s;
+}
+
+.prev {
+  background: #f0f2f5;
+  color: #666;
+}
+
+.next, .submit {
+  background: #2d8cf0;
+  color: #fff;
+}
+
+.submit {
+  background: #07c160;
+}
+
+button[disabled] {
+  opacity: 0.6;
+}
